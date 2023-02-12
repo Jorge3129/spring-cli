@@ -1,27 +1,16 @@
 import { join } from "path";
-import { ProjectMetadata } from "./parse-project";
 import * as fs from "fs/promises";
+import chalk from "chalk";
 
 export const writeResourceFile = async (
-  currentDir: string,
-  projectMetadata: ProjectMetadata,
-  resourcePackage: string,
-  typeSubpackage: string,
+  path: string,
   className: string,
   fileContent: string
 ) => {
-  const srcPath = join(
-    currentDir,
-    "src/main/java",
-    projectMetadata.group,
-    projectMetadata.name
-  );
+  const filePath = join(path, `${className}.java`);
 
-  const resourcePath = join(srcPath, resourcePackage),
-    typePath = join(resourcePath, typeSubpackage),
-    fileName = `${className}.java`,
-    filePath = join(typePath, fileName);
-
-  await fs.mkdir(typePath, { recursive: true });
+  await fs.mkdir(path, { recursive: true });
   await fs.writeFile(filePath, fileContent);
+
+  console.log(`${chalk.green("CREATE")} ${filePath}`);
 };

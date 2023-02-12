@@ -8,6 +8,10 @@ export const toPascalCase = (words: string[]): string => {
     .join("");
 };
 
+export const toKebabCase = (words: string[]): string => {
+  return words.map((word) => word.toLowerCase()).join("-");
+};
+
 export const toUnderScoreCase = (words: string[]) => {
   return words.map((word) => word.toLowerCase()).join("_");
 };

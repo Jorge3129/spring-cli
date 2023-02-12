@@ -4,13 +4,13 @@ import {
   toUnderScoreCase,
 } from "../utils/case-utils";
 
-export interface ResourceMetadata {
+export interface ResourceNamingSets {
   pascalCase: string;
   underscoreCase: string;
   kebabCase: string;
 }
 
-export const parseResource = (resourceName: string): ResourceMetadata => {
+export const parseResource = (resourceName: string): ResourceNamingSets => {
   const resourceSplit = parseKebabCase(resourceName);
 
   return {

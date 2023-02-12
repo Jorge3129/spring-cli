@@ -1,4 +1,4 @@
-import * as colors from "colors";
+import chalk from "chalk";
 
 export class ConsoleLogger {
   public log(message: string) {
@@ -6,15 +6,15 @@ export class ConsoleLogger {
   }
 
   public info(message: string) {
-    console.log(message.green);
+    console.log(chalk.green(message));
   }
 
   public error(message: string) {
-    console.log(message.red);
+    console.log(chalk.red(message));
   }
 
   public warn(message: string) {
-    console.log(message.yellow);
+    console.log(chalk.yellow(message));
   }
 }
 

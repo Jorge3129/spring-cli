@@ -5,7 +5,6 @@ import { Maybe } from "purify-ts";
 export interface ProjectMetadata {
   name: string;
   group: string;
-  packagePrefix: string;
 }
 
 export class ProjectParserService {
@@ -13,7 +12,7 @@ export class ProjectParserService {
     const name = await this.parseName(currentDir),
       group = await this.parseGroup(currentDir);
 
-    return { name, group, packagePrefix: `${group}.${name}` };
+    return { name, group };
   }
 
   public async parseGroup(currentDir: string): Promise<string> {
